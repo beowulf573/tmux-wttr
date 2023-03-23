@@ -27,9 +27,8 @@ get_weather() {
 	local format
 
 	format=$(get_tmux_option "@wttr_format" "%C+%t")
-    location=$(get_tmux_option "@wttr_location" "")
-    # TEMP
-	curl -s "http://wttr.in/$location?format=$format" | sed -e 's/°F/°/' -e 's/+//' -e 's/\s+$//' | tr '[:upper:]' '[:lower:]'
+        location=$(get_tmux_option "@wttr_location" "")
+	curl -s "https://wttr.in/$location?use_imperial=true&format=$format" | sed -e 's/°F/°/' -e 's/+//' -e 's/\s+$//' | tr '[:upper:]' '[:lower:]'
 }
 
 get_weather_from_cache() {
